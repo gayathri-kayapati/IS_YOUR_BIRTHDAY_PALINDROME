@@ -12,8 +12,8 @@ const isPalindrome = (str) => {
 };
 
 var date = {
-  day: 6,
-  month: 5,
+  day: 16,
+  month: 11,
   year: 2023,
 };
 function convertDateFromNumToStr(date) {
@@ -22,4 +22,17 @@ function convertDateFromNumToStr(date) {
     month: "",
     year: "",
   };
+  if (date.day < 10) {
+    newDate.day = "0" + date.day;
+  } else {
+    newDate.day = date.day.toString();
+  }
+  if (date.month < 10) {
+    newDate.month = "0" + date.month;
+  } else {
+    newDate.month = date.month.toString();
+  }
+  newDate.year = date.year.toString();
+  console.log(newDate.year);
 }
+convertDateFromNumToStr(date);
