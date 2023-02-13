@@ -33,6 +33,16 @@ function convertDateFromNumToStr(date) {
     newDate.month = date.month.toString();
   }
   newDate.year = date.year.toString();
-  console.log(newDate.year);
+  return newDate;
 }
-convertDateFromNumToStr(date);
+function getAllDateFormats(date) {
+  var dateStr = convertDateFromNumToStr(date);
+  var DDMMYYYY = dateStr.day + dateStr.month + dateStr.year;
+  var MMDDYYYY = dateStr.month + dateStr.day + dateStr.year;
+  var YYYYMMDD = dateStr.year + dateStr.month + dateStr.day;
+  var DDMMYY = dateStr.day + dateStr.month + dateStr.year.slice(-2);
+  var MMDDYY = dateStr.month + dateStr.day + dateStr.year.slice(-2);
+  var YYMMDD = dateStr.year.slice(-2) + dateStr.month + dateStr.day;
+  var dateFormats = [DDMMYYYY, MMDDYYYY, YYYYMMDD, DDMMYY, MMDDYY, YYMMDD];
+  return dateFormats;
+}
