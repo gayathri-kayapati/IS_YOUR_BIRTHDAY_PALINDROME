@@ -12,10 +12,12 @@ const isPalindrome = (str) => {
 };
 
 var date = {
-  day: 16,
-  month: 11,
-  year: 2023,
+  day: 2,
+  month: 2,
+  year: 2020,
 };
+
+// converting date from number to string and also taking care of "0" day and month is less then 10.
 function convertDateFromNumToStr(date) {
   var newDate = {
     day: "",
@@ -35,6 +37,7 @@ function convertDateFromNumToStr(date) {
   newDate.year = date.year.toString();
   return newDate;
 }
+// getting the date in all date formats.
 function getAllDateFormats(date) {
   var dateStr = convertDateFromNumToStr(date);
   var DDMMYYYY = dateStr.day + dateStr.month + dateStr.year;
@@ -45,4 +48,16 @@ function getAllDateFormats(date) {
   var YYMMDD = dateStr.year.slice(-2) + dateStr.month + dateStr.day;
   var dateFormats = [DDMMYYYY, MMDDYYYY, YYYYMMDD, DDMMYY, MMDDYY, YYMMDD];
   return dateFormats;
+}
+// checking the date is palindrome or not.
+function checkPalindromeForAllDateFormats(date) {
+  var listOfDateFormats = getAllDateFormats(date);
+  var flag = false;
+  for (let i = 0; i < listOfDateFormats.length; i++) {
+    if (isPalindrome(listOfDateFormats[i])) {
+      flag = true;
+      break;
+    }
+  }
+  return flag;
 }
