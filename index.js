@@ -10,13 +10,6 @@ const isPalindrome = (str) => {
   }
   return flag;
 };
-
-var date = {
-  day: 2,
-  month: 2,
-  year: 2020,
-};
-
 // converting date from number to string and also taking care of "0" day and month is less then 10.
 function convertDateFromNumToStr(date) {
   var newDate = {
@@ -61,6 +54,7 @@ function checkPalindromeForAllDateFormats(date) {
   }
   return flag;
 }
+// checking the year is leap year or not.
 function isLeapYear(year) {
   if (year % 400 === 0) {
     return true;
@@ -73,7 +67,7 @@ function isLeapYear(year) {
   }
   return false;
 }
-// finding next date.
+// finding next date from given input date.
 function getNextDate(date) {
   var day = date.day + 1;
   var month = date.month;
@@ -97,6 +91,10 @@ function getNextDate(date) {
       month++;
     }
   }
+  if (month > 12) {
+    month = 1;
+    year++;
+  }
   return {
     day: day,
     month: month,
@@ -106,18 +104,40 @@ function getNextDate(date) {
 
 // finding next palindrome date and missing days from given date.
 function getNextPalindromeDate(date) {
-  var nextDate = getNextDate(date);
   var missingDays = 0;
+  var nextDate = getNextDate(date);
   while (1) {
     missingDays++;
-    var dateString = convertDateFromNumToStr(nextDate);
-    var listOfDateFormats = getAllDateFormats(dateString);
-    for (let i = 0; i < listOfDateFormats.length; i++) {
-      if (isPalindrome(listOfDateFormats[i])) {
-        return [missingDays, nextDate];
-      }
+    var isPalindrome = checkPalindromeForAllDateFormats(nextDate);
+    if (isPalindrome) {
+      break;
+    }
+    nextDate = getNextDate(nextDate);
+  }
+  return [missingDays, nextDate];
+}
+var dateOfBirth = document.querySelector("#dob");
+var button = document.querySelector("#submit-btn");
+var output = document.querySelector("#output");
+
+function submitingDateOfBirth() {
+  var dobStr = dateOfBirth.value;
+
+  if (listOfDob !== "") {
+    var listOfDob = dobStr.split("-");
+    var date = {
+      day: Number(listOfDob[2]),
+      month: Number(listOfDob[1]),
+      year: Number(listOfDob[0]),
+    };
+    var isPalindrome = checkPalindromeForAllDateFormats(date);
+    if (isPalindrome) {
+      output.innerText = "YAY! Your birthday is palindrome 🥳🎊";
+    } else {
+      var [missingDays, newDate] = getNextPalindromeDate(date);
+      output.innerText = `The next palindrome date is ${newDate.day}-${newDate.month}-${newDate.year}, you missed it by ${missingDays} days 🙁`;
     }
   }
-  nextDate = getNextDate(nextDate);
 }
-console.log(getNextPalindromeDate(date));
+
+button.addEventListener("click", submitingDateOfBirth);

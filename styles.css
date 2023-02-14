@@ -1,4 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Asul&family=Crimson+Text:wght@400;600&family=Dancing+Script:wght@400;600&family=Kalam:wght@300;400;700&family=Lato:wght@300;400&family=Merriweather:wght@400;700&family=Montserrat:wght@400;600&family=Nunito+Sans:wght@300;600&family=Roboto:wght@300;700&family=Ubuntu:wght@300;400&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-  min-width: 600px;
+}
+.container {
+  font-family: "Kalam", cursive;
+  max-width: 600px;
+  min-height: 600px;
   text-align: center;
+  padding: 60px;
+  margin: 150px auto;
+  background: linear-gradient(#e66465, #9198e5);
+}
+h1 {
+  margin-bottom: 20px;
+}
+input {
+  min-width: 200px;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 0.5rem;
+  margin-bottom: 20px;
+  font-family: "Kalam", cursive;
+}
+button {
+  display: block;
+  min-width: 80px;
+  margin: auto;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 0.5rem;
+  margin-bottom: 40px;
+  font-family: "Kalam", cursive;
+}
+button:hover {
+  cursor: pointer;
+  background-color: transparent;
+}
+p {
+  font-size: 20px;
 }
