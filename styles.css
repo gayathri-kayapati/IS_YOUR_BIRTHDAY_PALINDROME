@@ -5,6 +5,10 @@
   padding: 0;
 }
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: "Kalam", cursive;
   max-width: 600px;
   min-height: 600px;
@@ -26,9 +30,7 @@ input {
   font-family: "Kalam", cursive;
 }
 button {
-  display: block;
   min-width: 80px;
-  margin: auto;
   padding: 10px;
   font-size: 20px;
   border-radius: 0.5rem;
@@ -46,8 +48,6 @@ button:hover {
 .footer {
   position: relative;
   bottom: 0;
-  margin: auto;
-  text-align: center;
   width: 100%;
 }
 .icon {
