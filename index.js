@@ -61,3 +61,63 @@ function checkPalindromeForAllDateFormats(date) {
   }
   return flag;
 }
+function isLeapYear(year) {
+  if (year % 400 === 0) {
+    return true;
+  }
+  if (year % 100 === 0) {
+    return false;
+  }
+  if (year % 4 === 0) {
+    return true;
+  }
+  return false;
+}
+// finding next date.
+function getNextDate(date) {
+  var day = date.day + 1;
+  var month = date.month;
+  var year = date.year;
+  var daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (month == 2) {
+    if (isLeapYear(year)) {
+      if (day > 29) {
+        day = 1;
+        month = 3;
+      }
+    } else {
+      if (day > 28) {
+        day = 1;
+        month = 3;
+      }
+    }
+  } else {
+    if (day > daysInMonths[month - 1]) {
+      day = 1;
+      month++;
+    }
+  }
+  return {
+    day: day,
+    month: month,
+    year: year,
+  };
+}
+
+// finding next palindrome date and missing days from given date.
+function getNextPalindromeDate(date) {
+  var nextDate = getNextDate(date);
+  var missingDays = 0;
+  while (1) {
+    missingDays++;
+    var dateString = convertDateFromNumToStr(nextDate);
+    var listOfDateFormats = getAllDateFormats(dateString);
+    for (let i = 0; i < listOfDateFormats.length; i++) {
+      if (isPalindrome(listOfDateFormats[i])) {
+        return [missingDays, nextDate];
+      }
+    }
+  }
+  nextDate = getNextDate(nextDate);
+}
+console.log(getNextPalindromeDate(date));
