@@ -116,13 +116,13 @@ function getNextPalindromeDate(date) {
   }
   return [missingDays, nextDate];
 }
+// get the reference to the input, processing and output elements.
 var dateOfBirth = document.querySelector("#dob");
 var button = document.querySelector("#submit-btn");
 var output = document.querySelector("#output");
-
+// click event functionality for button.
 function submitingDateOfBirth() {
   var dobStr = dateOfBirth.value;
-
   if (listOfDob !== "") {
     var listOfDob = dobStr.split("-");
     var date = {
